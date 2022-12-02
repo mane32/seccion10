@@ -218,9 +218,24 @@ window.addEventListener('online', isOnline );
 window.addEventListener('offline', isOnline );
 
 isOnline();
-//
+
 
 //Notificación 
+
+function verificaSuscripcion(activadas) {
+
+    if (activadas) {
+
+        btnActivadas.removeClass('oculto');
+        btnDesactivadas.addClass('oculto');
+
+    } else {
+        btnActivadas.addClass('oculto');
+        btnDesactivadas.removeClass('oculto');
+    }
+
+}
+verificaSuscripcion();
 
 function enviarNotificacion() {
 
@@ -270,16 +285,3 @@ function notificarme() {
 }
 // notificarme();
 
-// Get Key
-function getPublicKey() {
-
-    // fetch('api/key')
-    //     .then( res => res.text())
-    //     .then( console.log );
-
-    return fetch('api/key')
-        .then(res => res.arrayBuffer())
-        .then(key => new Uint8Array(key));
-
-
-}
